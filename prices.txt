@@ -1,0 +1,120 @@
+# ==============================================================
+#  SteelBook price file  (prices.txt)
+#  Edit in Notepad, save, then upload to your GitHub repo.
+#  The website reads this file every time it is opened.
+# ==============================================================
+#
+#  HOW TO WRITE A LINE
+#     name = price unit
+#  Units:  /kg   /t (tonne)   /m (metre, only for a named section)
+#  All prices are in AED, excluding VAT.
+#  Anything after a # is a note and is ignored.
+#
+#  !! The figures below are PLACEHOLDERS. Replace them with your
+#  !! supplier's prices before using the site for real quotes.
+
+updated = 17 Nov 2026
+
+# --------------------------------------------------------------
+#  1) PRODUCT GROUPS  - used when a section has no price of its own
+# --------------------------------------------------------------
+plate     =     3.00 /kg   # plates and sheets
+beam      =     3200 /t    # IPE, HEA, HEB, UB, UC, W ...
+channel   =     2773 /t    # channels, angles and tees
+hollow    =     3550 /t    # square and rectangular tube
+pipe      =     3600 /t    # pipe and CHS
+bar       =     2900 /t    # flat, round, square and hex bar
+rebar     =     2921 /t  
+ss304     =    11.00 /kg   # stainless steel 304
+ss316     =    16.00 /kg   # stainless steel 316
+aluminium =    12.00 /kg 
+
+# --------------------------------------------------------------
+#  2) SECTIONS  - price per metre for one exact section
+#     Use the same name the website shows (IPE300, HEB200, UPN160,
+#     UB254x146x31, SHS 100x100x5 ...). Add or delete lines freely.
+# --------------------------------------------------------------
+
+# IPE
+IPE80   =    19.20 /m
+IPE100  =    25.94 /m
+IPE120  =    33.18 /m
+IPE140  =    41.28 /m
+IPE160  =    50.46 /m
+IPE180  =    60.16 /m
+IPE200  =    71.58 /m
+IPE220  =    83.84 /m
+IPE240  =    98.30 /m
+IPE270  =   115.46 /m
+IPE300  =   135.20 /m
+IPE330  =   157.31 /m
+IPE360  =   182.75 /m
+IPE400  =   212.22 /m
+IPE450  =   248.29 /m
+IPE500  =   290.24 /m
+IPE550  =   337.60 /m
+IPE600  =   392.00 /m
+
+# HEA
+HEA100  =    53.38 /m
+HEA120  =    63.65 /m
+HEA140  =    78.94 /m
+HEA160  =    97.41 /m
+HEA180  =   113.70 /m
+HEA200  =   135.26 /m
+HEA220  =   161.66 /m
+HEA240  =   193.06 /m
+HEA260  =   218.18 /m
+HEA280  =   244.42 /m
+HEA300  =   282.75 /m
+HEA320  =   312.51 /m
+HEA340  =   335.36 /m
+HEA360  =   358.72 /m
+HEA400  =   399.36 /m
+HEA450  =   447.36 /m
+HEA500  =   496.32 /m
+HEA550  =   532.16 /m
+HEA600  =   568.96 /m
+HEA650  =   607.04 /m
+
+# HEB
+HEB100  =    65.41 /m
+HEB120  =    85.44 /m
+HEB140  =   107.94 /m
+HEB160  =   136.32 /m
+HEB180  =   163.94 /m
+HEB200  =   196.19 /m
+HEB220  =   228.74 /m
+HEB240  =   266.30 /m
+HEB260  =   297.60 /m
+HEB280  =   329.92 /m
+HEB300  =   374.72 /m
+HEB320  =   405.44 /m
+HEB340  =   429.44 /m
+HEB360  =   453.76 /m
+HEB400  =   496.96 /m
+HEB450  =   547.52 /m
+HEB500  =   599.68 /m
+HEB550  =   638.40 /m
+HEB600  =   678.08 /m
+HEB650  =   719.36 /m
+
+# UPN
+UPN50   =    15.47 /m
+UPN65   =    19.72 /m
+UPN80   =    24.00 /m
+UPN100  =    29.31 /m
+UPN120  =    36.94 /m
+UPN140  =    44.34 /m
+UPN160  =    52.33 /m
+UPN180  =    60.84 /m
+UPN200  =    70.16 /m
+UPN220  =    81.55 /m
+UPN240  =    92.04 /m
+UPN260  =   105.10 /m
+UPN280  =   116.24 /m
+UPN300  =   127.92 /m
+UPN320  =   165.08 /m
+UPN350  =   168.18 /m
+UPN380  =   174.92 /m
+UPN400  =   199.16 /m
