@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SteelBook — Steel Weight, Price & Section Handbook</title>
 <meta name="description" content="All-in-one steel handbook: weight and price calculators for plates, bars, tubes and profiles, plus a searchable database of European, British and American steel sections.">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#b93a0a">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SteelBook">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -226,6 +232,8 @@ svg.ico .sec{fill:var(--steel);stroke:none}
 .nest svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:6px;background:repeating-linear-gradient(45deg,var(--surface2),var(--surface2) 5px,var(--line) 5px,var(--line) 6px)}
 .nest rect.p{fill:var(--steel);stroke:var(--surface);vector-effect:non-scaling-stroke;stroke-width:1.5}
 .nest text{fill:var(--surface);font-family:var(--mono);font-weight:600;text-anchor:middle;dominant-baseline:central}
+.install{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;box-shadow:var(--shadow);font-size:14px}
+.install[hidden]{display:none}
 /* drawer */
 .scrim{position:fixed;inset:0;background:rgba(10,15,20,.45);z-index:40;display:none}
 .scrim.on{display:block}
@@ -269,6 +277,7 @@ svg.ico .sec{fill:var(--steel);stroke:none}
   </nav>
 
   <main>
+    <div class="install" id="installBar" hidden><span><b>Install SteelBook</b> on this device — opens like an app and works offline.</span><span class="row" style="flex-wrap:nowrap"><button class="btn sm primary" id="installBtn">Install</button><button class="btn sm ghost" id="installNo" aria-label="Dismiss">✕</button></span></div>
     <!-- CALCULATOR -->
     <section class="view" id="v-calculator">
       <div class="vhead"><div><h2>Weight &amp; price calculator</h2><p>Pick a shape, type the sizes — results update as you type.</p></div></div>
@@ -1193,6 +1202,16 @@ document.addEventListener('focusout',e=>{ if(isTyping(e.target)) setTimeout(()=>
 if(window.visualViewport) visualViewport.addEventListener('resize',()=>{ if(coarse && isTyping(document.activeElement) && visualViewport.height < window.innerHeight*0.8) document.activeElement.scrollIntoView({block:'center'}); });
 document.addEventListener('keydown',e=>{ if(e.key==='Enter' && e.target.tagName==='INPUT'){ e.preventDefault(); e.target.blur(); } });
 $$('input').forEach(i=>{ if(!i.hasAttribute('enterkeyhint')) i.setAttribute('enterkeyhint','done'); });
+
+/* ---------- installable app + offline ---------- */
+if(!inFrame && /^https?:$/.test(location.protocol) && 'serviceWorker' in navigator){
+  window.addEventListener('load',()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}); });
+  let deferred=null;
+  window.addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); deferred=e; if(!S.noInstall) $('#installBar').hidden=false; });
+  $('#installBtn').onclick=()=>{ if(!deferred) return; deferred.prompt(); deferred.userChoice.finally(()=>{ deferred=null; $('#installBar').hidden=true; }); };
+  $('#installNo').onclick=()=>{ S.noInstall=1; save(); $('#installBar').hidden=true; };
+  window.addEventListener('appinstalled',()=>{ $('#installBar').hidden=true; toast('SteelBook installed'); });
+}
 
 /* ---------- boot ---------- */
 applyTheme(); applyView(); initCalc(); initSections(); initTools(); initNest(); initRef(); renderPrices(); badge(); route(); loadPriceFile();

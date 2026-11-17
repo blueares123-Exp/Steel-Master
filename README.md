@@ -1,6 +1,13 @@
 # SteelBook — steel weight, price and section handbook
 
-A single-page web app that works on phones, tablets and desktop browsers. No build step, no server, no dependencies: everything is in `index.html`.
+A single-page web app that works on phones, tablets and desktop browsers, and can be installed like an app. No build step, no server, no dependencies.
+
+| File | What it is |
+|---|---|
+| `index.html` | The whole app |
+| `prices.txt` | Your prices — edit in Notepad |
+| `manifest.json`, `icon-192.png`, `icon-512.png` | Make the site installable (name and icons) |
+| `sw.js` | Lets the app work offline |
 
 ## What is inside
 
@@ -16,7 +23,7 @@ A single-page web app that works on phones, tablets and desktop browsers. No bui
 ## Deploy on GitHub Pages
 
 1. Create a new repository on GitHub (for example `steelbook`).
-2. Upload `index.html`, `prices.txt` and `README.md` to the repository root (Add file → Upload files → Commit).
+2. Upload all seven files to the repository root, with exactly these names: `index.html`, `prices.txt`, `manifest.json`, `sw.js`, `icon-192.png`, `icon-512.png`, `README.md` (Add file → Upload files → Commit).
 3. Open **Settings → Pages**. Under *Build and deployment* choose **Deploy from a branch**, branch **main**, folder **/ (root)**, then **Save**.
 4. After about a minute the site is live at `https://<your-username>.github.io/steelbook/`.
 
@@ -34,6 +41,12 @@ The site reads `prices.txt` (next to `index.html`) every time it is opened, so c
 4. After about a minute, refresh the site. The **Prices** tab shows the date from the file and lists any line it could not understand.
 
 Rules: prices are in AED excluding VAT; a section name must match the name shown in the section database; a section with no line of its own uses its product-group rate; a rate typed on a device overrides the file on that device until **Reset my device changes** is pressed. If `prices.txt` is missing the site falls back to built-in indicative rates. The file is only read when the site is served from GitHub Pages (or any web server) — not when `index.html` is opened by double-click.
+
+## Installing it as an app
+
+Open the site in Chrome or Edge and use **Install** (in the bar at the top of the page, the address bar, or the browser menu). On iPhone use Safari -> Share -> **Add to Home Screen**. The site keeps working in a normal browser tab as well.
+
+Once it has been opened online, the app works with no connection. When online it always loads the newest `index.html` and `prices.txt`; offline it uses the last copy it saw.
 
 ## Data sources and accuracy
 
